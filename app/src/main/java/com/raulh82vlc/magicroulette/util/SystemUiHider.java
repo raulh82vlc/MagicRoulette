@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2015 Raul Hernandez Lopez
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 package com.raulh82vlc.magicroulette.util;
 
 import android.app.Activity;
@@ -52,17 +67,22 @@ public abstract class SystemUiHider {
      * but cannot be hidden, show and hide will toggle low profile mode.
      */
     public static final int FLAG_HIDE_NAVIGATION = FLAG_FULLSCREEN | 0x4;
-
+    /**
+     * A dummy no-op callback for use when there is no other listener set.
+     */
+    private static OnVisibilityChangeListener sDummyListener = new OnVisibilityChangeListener() {
+        @Override
+        public void onVisibilityChange(boolean visible) {
+        }
+    };
     /**
      * The activity associated with this UI hider object.
      */
     protected Activity mActivity;
-
     /**
      * The view on which {@link View#setSystemUiVisibility(int)} will be called.
      */
     protected View mAnchorView;
-
     /**
      * The current UI hider flags.
      *
@@ -71,11 +91,16 @@ public abstract class SystemUiHider {
      * @see #FLAG_LAYOUT_IN_SCREEN_OLDER_DEVICES
      */
     protected int mFlags;
-
     /**
      * The current visibility callback.
      */
     protected OnVisibilityChangeListener mOnVisibilityChangeListener = sDummyListener;
+
+    protected SystemUiHider(Activity activity, View anchorView, int flags) {
+        mActivity = activity;
+        mAnchorView = anchorView;
+        mFlags = flags;
+    }
 
     /**
      * Creates and returns an instance of {@link SystemUiHider} that is
@@ -97,12 +122,6 @@ public abstract class SystemUiHider {
         } else {
             return new SystemUiHiderBase(activity, anchorView, flags);
         }
-    }
-
-    protected SystemUiHider(Activity activity, View anchorView, int flags) {
-        mActivity = activity;
-        mAnchorView = anchorView;
-        mFlags = flags;
     }
 
     /**
@@ -148,15 +167,6 @@ public abstract class SystemUiHider {
 
         mOnVisibilityChangeListener = listener;
     }
-
-    /**
-     * A dummy no-op callback for use when there is no other listener set.
-     */
-    private static OnVisibilityChangeListener sDummyListener = new OnVisibilityChangeListener() {
-        @Override
-        public void onVisibilityChange(boolean visible) {
-        }
-    };
 
     /**
      * A callback interface used to listen for system UI visibility changes.

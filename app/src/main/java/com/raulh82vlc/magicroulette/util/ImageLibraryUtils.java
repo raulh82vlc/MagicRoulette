@@ -1,9 +1,16 @@
 /*
- * Critizen Android Client (https://critizen.com)
- * Copyright (c) 2015 NextChance Stocks S.L. All rights reserved.
+ * Copyright (C) 2015 Raul Hernandez Lopez
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
- * @copyright Copyright (c) 2015 NextChance Stocks S.L. All rights reserved.
- * @link https://play.google.com/store/apps/details?id=com.critizen
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
 package com.raulh82vlc.magicroulette.util;
@@ -23,42 +30,42 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
  */
 public class ImageLibraryUtils {
 
-	/**
-	 * Singleton instance
-	 */
-	private static RequestManager mGlideInstance;
+    /**
+     * Singleton instance
+     */
+    private static RequestManager mGlideInstance;
 
-	/**
-	 * init
-	 *
-	 * @param context Application context
-	 */
-	public static void init(Context context) {
-		mGlideInstance = Glide.with(context);
-	}
+    /**
+     * init
+     *
+     * @param context Application context
+     */
+    public static void init(Context context) {
+        mGlideInstance = Glide.with(context);
+    }
 
-	/**
-	 * getInstance
-	 *
-	 * @return mGlideInstance Singleton instance
-	 */
-	public static RequestManager getInstance() throws NullPointerException {
-		if (mGlideInstance == null) {
-			throw new NullPointerException("Glide instance failed");
-		}
-		return mGlideInstance;
-	}
+    /**
+     * getInstance
+     *
+     * @return mGlideInstance Singleton instance
+     */
+    public static RequestManager getInstance() throws NullPointerException {
+        if (mGlideInstance == null) {
+            throw new NullPointerException("Glide instance failed");
+        }
+        return mGlideInstance;
+    }
 
-	/**
-	 * loadImageByResourceId
-	 *
-	 * @param iconResId id from resources
-	 * @param img       ImageView where to render
-	 */
-	public static void loadImageByResourceId(int iconResId, ImageView img) {
-		mGlideInstance
-				.load(iconResId)
-				.diskCacheStrategy(DiskCacheStrategy.ALL)
-				.into(img);
-	}
+    /**
+     * loadImageByResourceId
+     *
+     * @param iconResId id from resources
+     * @param img       ImageView where to render
+     */
+    public static void loadImageByResourceId(int iconResId, ImageView img) {
+        mGlideInstance
+                .load(iconResId)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(img);
+    }
 }

@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2015 Raul Hernandez Lopez
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 package com.raulh82vlc.magicroulette.adapters;
 
 import android.content.Context;
@@ -15,7 +30,7 @@ import java.util.List;
 
 /**
  * Created by Raul Hernandez Lopez on 07/09/2015.
- *
+ * <p/>
  * adaptation of the WheelAdapter from google,
  * totally customised also in subclasses used,
  * as the aim of this assignment "is not reinventing the wheel"
@@ -29,16 +44,15 @@ public class RouletteAdapter extends AbstractWheelAdapter {
     // Image size
     final int IMAGE_WIDTH = 200;
     final int IMAGE_HEIGHT = 140;
-
+    // Layout params for image view
+    final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
     // Slot machine symbols
-    private final int items[] = new int[] {
+    private final int items[] = new int[]{
             R.drawable.fruittype_avocado,
             R.drawable.fruittype_burrito,
             R.drawable.fruittype_skeleton
     };
-
     private Context context;
-
     // Cached images
     private List<SoftReference<Bitmap>> images;
 
@@ -64,9 +78,6 @@ public class RouletteAdapter extends AbstractWheelAdapter {
     public int getItemsCount() {
         return items.length;
     }
-
-    // Layout params for image view
-    final ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(IMAGE_WIDTH, IMAGE_HEIGHT);
 
     @Override
     public View getItem(int index, View cachedView, ViewGroup parent) {

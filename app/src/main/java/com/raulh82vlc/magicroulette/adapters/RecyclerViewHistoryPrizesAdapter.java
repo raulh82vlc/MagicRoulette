@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2015 Raul Hernandez Lopez
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 package com.raulh82vlc.magicroulette.adapters;
 
 import android.app.Activity;
@@ -24,11 +39,15 @@ import butterknife.InjectView;
  */
 public class RecyclerViewHistoryPrizesAdapter extends RecyclerView.Adapter<RecyclerViewHistoryPrizesAdapter.PrizesHolder> {
 
-    /** Vars initialisation */
+    /**
+     * Vars initialisation
+     */
     private final List<List<Sign>> listOfSigns;
     private Activity activity;
 
-    /** RecyclerViewHistoryPrizesAdapter constructor */
+    /**
+     * RecyclerViewHistoryPrizesAdapter constructor
+     */
     public RecyclerViewHistoryPrizesAdapter(Activity ctx, List<List<Sign>> symbols) {
         this.activity = ctx;
         this.listOfSigns = symbols;
@@ -58,10 +77,10 @@ public class RecyclerViewHistoryPrizesAdapter extends RecyclerView.Adapter<Recyc
     /**
      * setImage
      *
-     * @param position int
+     * @param position     int
      * @param myActualList list of actual three-status row
      * @param prizesHolder where all UI views are
-     * */
+     */
     private void setImage(int position, List<Sign> myActualList, PrizesHolder prizesHolder) {
         int idResource = ModelUtils.giveMeResourceId(activity, myActualList.get(position).getId());
         if (idResource != 0) {
