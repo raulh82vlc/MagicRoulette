@@ -1,0 +1,99 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".MachineRouletteMainActivity">
+
+    <TextView android:id="@+id/press" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
+        android:textStyle="bold" android:textSize="40sp" android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:text="" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:id="@+id/container_id">
+        <ImageView
+            android:id="@+id/arrow_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@+id/roulette_1"
+            android:layout_alignBottom="@+id/roulette_1"
+            android:src="@drawable/right_arrow" />
+        <com.raulh82vlc.magicroulette.widgets.WheelView
+            android:id="@+id/roulette_1"
+            android:layout_toRightOf="@+id/arrow_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.raulh82vlc.magicroulette.widgets.WheelView
+            android:id="@+id/roulette_2"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/roulette_1"
+            android:layout_height="wrap_content"/>
+        <com.raulh82vlc.magicroulette.widgets.WheelView
+            android:id="@+id/roulette_3"
+            android:layout_toRightOf="@+id/roulette_2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <ImageView
+            android:id="@+id/arrow_right"
+            android:layout_toRightOf="@+id/roulette_3"
+            android:layout_alignTop="@+id/roulette_3"
+            android:layout_alignBottom="@+id/roulette_3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/left_arrow" />
+    </RelativeLayout>
+
+    <TextView android:id="@+id/status_game" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
+        android:textStyle="bold" android:textSize="40sp" android:gravity="center"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/container_history">
+        <TextView android:id="@+id/history_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_overlay"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="History" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/history_rv"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="200dp"
+            android:clipToPadding="false"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay" android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button android:id="@+id/start_game_button" style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="@string/click_me" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout>

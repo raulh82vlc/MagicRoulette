@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MagicRoulette</string>
+
+    <string name="click_me">Start Game!</string>
+    <string name="click_here_text">CLICK\nHERE</string>
+    <string name="general_ok">CLAIM!</string>
+</resources>
